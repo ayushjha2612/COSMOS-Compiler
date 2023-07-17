@@ -1,0 +1,22 @@
+#/ The main body of code starts here /#
+struct abc
+{
+   temp t;
+   speed s;
+};
+
+proc int main()
+{
+   mass m= 1.23456e20, m2= 6.243e24;
+   acc a= 2.22e3;
+   repeat(int i=0; i<22; i++){ break;}
+   if(true) 
+   {
+       ly l1= 2.2e0;
+   }
+   struct abc obj;
+   obj.t= 22.00e12;
+   obj.s= 32.9902e12; 
+
+   return 0;
+}

@@ -1,0 +1,30 @@
+# Argument of type void
+
+proc mass spe(void b, acc a)
+{
+	return a*6.66e-31;
+}
+proc speed foo(temp b, acc b)
+{
+	return b*6.66e-31;
+}
+proc speed foo(temp b, acc a)
+{
+	return a*6.66e-31;
+}
+
+proc int main()
+{
+	mass m1 = 1.12e23;
+	acc a = 2.2e33;
+	mass s,m2 ;
+    int integer= 1;
+	s= spe(m1,a);
+
+    if((m1> m2) )
+    {
+        m2 =9.1e22;
+    }
+
+	return 0;
+}

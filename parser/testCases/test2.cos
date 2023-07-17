@@ -1,0 +1,25 @@
+struct planet
+{
+	mass m;
+	dist radius;
+	string name;
+};
+
+proc acc gravitation_acc(struct planet p1)
+{
+	acc value;
+	value = 6.37e-11 * p1.m /p1.radius^2;
+	return value;
+}
+
+proc int main(){
+	struct planet planet1;
+	acc planet1_acc;
+	
+	planet1.m= 5.631e31;
+	planet1.radius = 2.651e20;
+	planet1.name= "uranus";
+	planet1_acc = gravitation_acc(p1);
+	return 0;
+		
+}

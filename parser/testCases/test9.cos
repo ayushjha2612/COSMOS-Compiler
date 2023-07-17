@@ -1,0 +1,12 @@
+proc int main(){
+    #/multiple repeat loop test/#
+    repeat(;;)
+    {
+        repeat(;;)
+        {
+            repeat(;;)
+            break;
+        }
+    }
+	return 0;	
+}

@@ -1,0 +1,24 @@
+struct planet 
+{
+    mass m;
+    dist radius;
+};
+
+proc acc force_of_g(struct planet P)
+{
+   acc ac ;
+   #/ checking square operator and complicated expressions /#
+   ac = 6.0e-11 * ((P.m)^2) / (P.radius * P.radius); 
+   return ac;
+}
+ 
+proc int main()
+{
+   struct planet earth;
+   mass m = 1.23456e20, density d = 6.243e24;  #/ improper multiple declarations in a single line/#
+   acc a = 2.22e3;
+   earth.mass = 2.0e30;
+   earth.radius = -12.2e-2;
+
+   return 0;
+}

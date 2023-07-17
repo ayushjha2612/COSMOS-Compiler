@@ -1,0 +1,14 @@
+struct planet
+{
+	mass m;
+	dist radius;
+	string name;
+};
+
+proc int main(){
+	#/incorrect constant type test/#
+	#/This test case will give error at line 11 because float constant is not allowed/#
+    acc a  = 3.14;
+    #/Use 3.14e0 instead/#
+	return 0;
+}

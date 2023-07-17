@@ -1,0 +1,11 @@
+struct planet
+{
+   density d; 
+   dist radius;
+};
+
+proc int main(){
+    struct planet P;
+    P.d = +2.4e11; #/ checking if +2.4 doesnt cause error /#
+    mass mass;    #/identifier cant be a keyword /#
+}

@@ -1,0 +1,13 @@
+proc force gravitational_force(mass ma, mass mb, dist r)
+{
+    force f = (6.67e-11*ma*mb)/((r)^2.0e0);
+    return f;
+}
+proc int main()
+{
+    mass Me= 6.0e24, mbody=1.0e0;
+    dist Re = 6.378e6;
+    force grav_force = gravitational_force(Me, mbody, Re);
+    output(grav_force);
+	return 0;
+}

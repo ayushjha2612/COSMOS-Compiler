@@ -1,0 +1,38 @@
+struct planet
+{
+	mass m;
+	dist radius;
+	string name;
+};
+
+
+proc force gravitation(struct planet p1,struct planet p2,dist d)
+{
+	force value;
+	value = 6.37e-11 * p1.m * p2.m /d^2;
+	return value;
+}
+
+proc int main(){
+
+	mass m1 = 6.6106e5;
+	mass m2 = 6.61e8;
+	speed c = 2.997e8;
+	energy mass_conversion = m1*c^2;
+	mass total_mass=m1+m2;
+	struct planet planet1;
+	struct planet planet2;
+	dist earth_jupiter = 5.4664e28;
+
+	planet1.m=21.5e26;
+	planet1.radius=6.861e12;
+	planet1.name="earth";
+	
+	planet2.m=1.54231e21;
+	planet2.radius=6.6435e16;
+	planet2.name="jupiter";
+	
+	gravitation(planet1,planet2,earth_jupiter);
+
+	return 0;
+}

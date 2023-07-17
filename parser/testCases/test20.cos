@@ -1,0 +1,24 @@
+struct planet 
+{
+    mass m;
+    dist radius;
+};
+
+
+proc int main()
+{
+   struct planet earth;
+   mass m = 1.23456e20;
+   mass m2 = 6.243e24;
+   acc a = 2.22e3;
+    
+   repeat(int i = 0; i <22; i++)        
+   {
+        #/ AND_OP OR_OP testing and invalid token '|'/#
+        else if(false | false){
+            acc a= -1e3 && 1 || 1;
+        }
+   }
+
+    return 0;
+}

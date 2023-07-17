@@ -1,0 +1,30 @@
+struct planet 
+{
+    mass m;
+    dist radius;
+};
+
+
+proc int main()
+{
+   struct planet earth;
+   mass m = 1.23456e20;
+   mass m2 = 6.243e24;
+   acc a = 2.22e3;
+   earth.mass.radius = -10;
+   earth..mass= 2.0e10;
+
+    #/ checking multiple declaration statements and relation statements in repeat syntax/#
+   repeat(int i = 0, j=2; i <= 22 && i < 22; i++)        
+   {
+        #/ empty if expression and condition statements to be executed in if can be empty 
+           but condition in if() can't be empty'
+        #/
+        if()
+        {
+            ;
+        } 
+   }
+
+    return 0;
+}

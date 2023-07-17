@@ -1,0 +1,23 @@
+// Invalid initialization
+
+proc mass spe(mass b, acc a)
+{
+	return b*a*6.66e-31;
+}
+
+proc int main()
+{
+	mass m1 = 1.12e23;
+	acc a = 2.2e33;
+	mass s,m2 ;
+    int integer;
+	integer =s;
+	s= spe(m1,a);
+
+    if((m1> m2) )
+    {
+        m2 =9.1e22;
+    }
+
+	return 0;
+}

@@ -1,0 +1,23 @@
+
+proc mass ret_mass(mass m)
+{
+    return m;
+}
+proc int main()
+{
+    dist radius=1.6468e9;
+    mass total_mass=1.6842e37;
+    density avg_density=total_mass/radius^3;
+    force f= 77.23e-2;
+    freq mu= 6.67e20;
+    time t=1/freq;
+
+    if(t< 2.0e0 )
+    {
+        t=5.0e0 ;
+    }
+    parsec pr; 
+    ret_mass(total_mass);
+
+    return 0;
+}

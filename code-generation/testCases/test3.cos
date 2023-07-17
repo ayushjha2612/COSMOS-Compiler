@@ -1,0 +1,17 @@
+// Undeclared function used
+
+proc mass spe(mass b, acc a)
+{
+	return b*a*6.66e-31;
+}
+
+proc int main()
+{
+	mass m1 = 1.12e23;
+	acc a = 2.2e33;
+	mass s ;
+	s= sp(m1,a);
+    
+	
+	return 0;
+}

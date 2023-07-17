@@ -1,0 +1,13 @@
+proc int main(){
+    if(i==1)
+    {
+        {
+            {
+                {
+                    #/Indentation check/#
+                }
+            }
+        }
+    }
+	return 0;	
+}

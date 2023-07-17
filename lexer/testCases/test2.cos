@@ -1,0 +1,24 @@
+
+#/ The main body of code starts here /#
+
+proc int main()
+{
+   AU astro= 3.1415e23;
+   arcsec acs;
+   bool flag =true;
+   repeat(int i=0; i<2; i++){ continue;}
+   if(flag==true && 1) 
+   {
+       char cc='x';
+   }
+   else if(astro!= -1.1e1 || true)
+   {
+      dist d= 35.33e12;
+   }
+   else 
+   {
+      energy= -96.69e-2;
+   }
+   return 0;
+
+}

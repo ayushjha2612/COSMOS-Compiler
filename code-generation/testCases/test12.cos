@@ -1,0 +1,24 @@
+struct astrobject
+{
+	mass m;
+    dist radius;
+};
+
+proc acc calulate_g(struct astrobject planet)
+{
+	acc a = (6.67e-11*(planet.m))/((planet.radius)^2.0e0);
+	return a;
+}
+proc int main()
+{
+	struct astrobject planet;
+    planet.m = 6.0e24;
+    planet.radius = 6.378e6 ;
+
+    acc a;
+    a = calulate_g(planet);
+
+    output(a);
+	return 0;
+}
+

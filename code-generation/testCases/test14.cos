@@ -1,0 +1,13 @@
+proc Time keplers_law3(Time t2, dist r1, dist r2)
+{
+    Time t = ((t2^2.0e0)*(r1^3.0e0))/ ((r2^3.0e0));
+    return t;
+}
+proc int main()
+{
+    Time t_titan = 15.95e0;
+    dist r_titan = 1.22e9, r_hyperion = 1.48e9;
+    Time t_hyperion = keplers_law3(t_titan, r_hyperion, r_titan);
+    output(t_hyperion);
+    return 0;
+}

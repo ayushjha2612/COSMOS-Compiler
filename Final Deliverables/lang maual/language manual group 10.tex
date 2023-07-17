@@ -1,0 +1,757 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{concmath}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[pdftex]{graphicx}
+\usepackage[a4paper,total={6.5in,9in}]{geometry}
+\title{\Huge{\textbf{COSMOS}}}
+\author{Shashank Shanbhag - CS20BTECH11061\\Ayush Jha-CS20BTECH11006\\Avula Dinesh - CS20BTECH11005\\Yuvraj Singh Shekhawat- CS20BTECH11057\\Rohan Atkurkar - CS20BTECH11041}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={An Example},
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{\Large{Reference manual:-}}
+\subsection{Introduction}
+This maual contains the details of the lexical conventions and parser rules of the COSMOS language.
+
+\subsection{lexical conventions}
+The program is translated in multiple phanses mainly
+\begin{itemize}
+\item lexical analysis
+\item Parsing and grammar checking
+\item Code generation(transpiling)
+\end{itemize}
+\subsection{Tokens}
+We have mainly six classes of tokens -
+\begin{itemize}
+\item identifiers
+\item  keywords
+\item  constants
+\item  string literals
+\item  operators
+\item other separators like comments and newlines 
+\end{itemize}
+
+
+\subsection{Comments:-}
+The characters /* introduce a comment, which terminates with the characters */ . Comments
+do not nest, and they do not occur within a string or character literals.
+
+
+
+
+\subsection{Keywords used in the language:-}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{\textbf{Keyword} }\\
+\hline
+bool &
+char&
+short&
+int&
+float\\
+\hline
+string& 
+auto &
+astrobject&
+mass&
+density\\
+\hline
+dist&
+time&
+speed&
+acc&
+energy\\
+\hline
+force&
+freq&
+ly&
+AU&
+solar\_mass\\
+\hline
+parsec&
+temp&
+arcsec&
+repeat&
+break\\
+\hline
+continue&
+if&
+else&
+return&
+void \\
+\hline
+struct &
+\multicolumn{4}{|c|}{proc}\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Constants}
+{\itshape
+constants
+\hspace*{1cm} Intcosnt - and integer number used in the loop variable\\
+\hspace*{1cm} Charcosnt - used for storing character constants\\
+\hspace*{1cm} SN\_cosnt - used to strore the scientific notation number in the format ae\^b where a and b are real numbers\\
+\hspace*{1cm} Boolcosnt - used to store true/false\\
+\hspace*{1cm} String literal - used to store the string in the format ". . ."\\
+
+}
+
+
+
+
+\begin{table}
+
+\begin{tabular}{|m{3in}|m{3in}|}
+\hline
+\textbf{Constant} & \textbf{Unit} \& \textbf{ How to use the Constant in the language}\\
+\hline
+Solar mass & 1.989$\times 10^{30}$ kg\\
+\hline
+$R_e$ Radius of Earth & 6.371 $\times 10^3$m\\
+\hline
+$M_e$ & 5.972 $\times 10^{24}$m\\
+\hline
+$R_s$ & 1.989$\times 10^{30}$m\\
+\hline
+Astronomical Unit & 1.496$\times 10^{11}$m\\
+\hline
+Light year & 9.460$\times 10^{15}$m\\
+\hline
+Gravitational Constant(G) & 6.674e$\times 10^{-11}$\\
+\hline
+speed of light & 2.997 $\time 10^8$ m/s \\
+\hline
+\end{tabular}\\
+\caption{Constants }
+\label{Constant values in language}
+\end{table}
+
+
+\subsection{Operators:-}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Operators} & \textbf{Use of operator} & \textbf{Associativity}\\
+\hline
++ & addition & \multirow{17}{*}{left-right}\\ \cline{1-2}
+
+- & subtraction &\\ \cline{1-2}
+
+* & multiplication & \\ \cline{1-2}
+
+/ & division & \\ \cline{1-2}
+
+$\wedge$ & power & \\ \cline{1-2}
+
+$>$ & Greater than & \\ \cline{1-2}
+
+$<$ & Less than & \\ \cline{1-2}
+
+$>=$ & Greater than or equal to & \\ \cline{1-2}
+
+$<=$ & Less than or equal to & \\ \cline{1-2}
+
+$==$ & Test equivalence & \\ \cline{1-2}
+
+$!=$ & Test inequality & \\ \cline{1-2}
+
+\&\& & AND Left & \\ \cline{1-2}
+
+$||$ & OR Left & \\ \cline{1-2}
+
+\% & modulo & \\ \cline{1-2}
+
+. & access (used for structs) & \\ 
+\hline
+$=$  & Assignment & \multirow{2}{*}{right-left}\\ \cline{1-2}
+! & logical not & \\
+\hline
+\end{tabular}
+\caption{Operators used in the language}
+\end{table}
+
+\subsection{Operator Precedence :}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|}
+    \hline
+    \textbf{Order Of precedence:}\\
+    \hline
+. ( ) [ ]\\
+\hline
+ !\\
+\hline
+  $\wedge$ \\
+\hline
+* / \%\\
+\hline
++ -\\
+\hline
+$<$ $<=$  $>$ $>=$\\
+\hline
+== !=\\
+\hline
+\&\& \\
+\hline
+$||$ \\
+\hline
+  =\\
+
+\hline
+
+
+    \end{tabular}
+    \caption{Operator precedence}
+    \label{operator precedence}
+\end{table}
+
+
+
+
+\subsection{Data Types:-}
+
+
+
+\begin{enumerate}
+\item Boolean(as bool)\\
+    A boolean data type can only take 2 values: true(1) or false(0).
+\item Character(as char)\\
+	A character variable can take all ASCII values ranging from 0-127.
+\item  int\\
+	Int data type is used to represent integer numbers.
+\item Floating point(as float)
+This is used to represent decimal numbers or floating point numbers. It will be used to represent mantissa in scientific notation.\\ \\
+\textbf{Note:}\\
+All data types below will be represented in the format of scientific notation . 
+Format:\\
+Scientific notation- A pair consisting of $ <float>e<short int>$\\
+With precision upto 6 decimals
+\item mass(in kg)\\
+mass data type represents the mass of any planet, star or astronomical object.
+\item density(in kg/m3)\\
+density data type represents the density of any planet, star or astronomical object.
+\item dist(in m)\\
+dist data type represents the distance between astronomical objects.
+\item speed(in m/s)\\
+speed data type represents the speed of the astronomical object.It might be used to represent escape velocity, orbital velocity, etc.
+\item acc(in m/s2)\\
+acc data type represents the acceleration of the astronomical object. It might be used to represent acceleration due to gravity(g).
+\item time(in s)\\
+time data type represents the time taken into consideration while solving the problem.
+\item force(in N)\\
+force data type usually represents the gravitational force of attraction between astronomical objects.
+\item energy(in J)\\
+energy data type represents kinetic energy, potential energy, binding energy, etc. for astronomical objects.
+\item ly\\
+ly(Light year) is the distance light travels in one year. We will use this data type to represent extremely large distances.
+\item AU\\
+AU(Astronomical unit) is roughly the distance from earth and sun. We will use this data type to represent extremely large distances.
+\item solar\_mass\\
+solar\_mass(Stellar mass) is a phrase that is used by astronomers to describe the mass of a star. We will use this data type to represent large masses.\\
+\item parsec\\
+parsec is equal to about 3.26 light years . One parsec corresponds to the distance at which the mean radius of the earth's orbit subtends an angle of one second of arc. We will use this data type to represent extremely large distances.\\
+\item temp(in K)\\
+temp data type will be used to represent the temperature of any star, or the average temperature of empty space between celestial bodies.\\
+\item arcsec\\
+arcsec is the data type that will be used to represent angle. arcsec equals 1/3600 of a degree.\\
+Data type formed from combination of primitive data types
+\item string\\
+string data type will be used to represent a combination of characters.
+\\
+
+Struct data type
+\item astrobject\\
+astroject(Astronomical\_object) data type is used to represent spherical astronomical objects. It will be a struct with mass and radius of the astronomical object as its members.
+
+
+\end{enumerate}
+
+
+
+\subsection{Syntax:-}
+Examples of syntax are
+\begin{enumerate}
+\item syntax for repeat	\\
+repeat statement is used for looping.\\
+	Syntax:\\
+ repeat( initialize; condition; update)\{ \\
+\hspace*{1cm}   \#statements for execution\#\\
+ \}\\
+\item syntax for if-else\\
+If-else is used for creating conditional statements.\\
+Syntax:\\
+if( expression ) \\
+\{ \\
+\hspace*{1cm}    \#statements for execution if expression is true\# \\
+\} \\
+else \\
+\{ \\
+\hspace*{1cm}    \#statements for execution if expression is false\# \\
+\} \\
+
+\item syntax of defining function\\
+keyword "proc" is used before declaring the function.\\
+Syntax:-\\
+Proc data\_type func\_name(data\_type1 arg1,data\_type arg2....)\\
+\{\\
+\hspace*{1cm} \# Function body \#\\
+\}\\
+\end{enumerate}
+
+\section{Expressions:}
+
+\subsection{primary\_expression}
+{\itshape
+primary\_expression\\
+\hspace*{1cm} IDENTIFIER\\
+\hspace*{1cm}   CONSTANT\\
+\hspace*{1cm}   '(' expression ')'\\
+\hspace*{1cm};\\
+}
+A primary expression can be an \textit{identifier} or a \textit{constant} or a ' parentheseised expression'
+
+\subsection{postfix\_expression}
+{\itshape
+postfix\_expression\\
+\hspace*{1cm} primary\_expression\\
+\hspace*{1cm}   postfix\_expression '(' ')'\\
+\hspace*{1cm}   postfix\_expression '(' argument\_list ')'\\
+\hspace*{1cm}   postfix\_expression '.' IDENTIFIER\\
+\hspace*{1cm}   postfix\_expression INC\_OP\\
+\hspace*{1cm}   postfix\_expression DEC\_OP\\
+\hspace*{1cm};\\
+}
+A postfix expression can be a chain of 'parenthesis' , 'parentheseised argument list' , 'access of struct using '.' ' ,\textit{increment operator} , \textit{decrement operator}
+\subsection{argument\_list}
+{\itshape
+argument\_list\\
+\hspace*{1cm} assignment\_expression\\
+\hspace*{1cm}   argument\_expression\_list ',' assignment\_expression\\
+\hspace*{1cm};\\
+}
+An argument list is a bunch of \textit{arguments} seperated by ',' 
+\subsection{unary\_expression}
+{\itshape
+unary\_expression\\
+\hspace*{1cm} postfix\_expression\\
+\hspace*{1cm}   INC\_OP unary\_expression\\
+\hspace*{1cm}   DEC\_OP unary\_expression\\
+\hspace*{1cm};\\
+}
+Unary expression is a bunch of postfix expressions seperated by either \textit{incrementor operator} or \textit{decrement operator}
+\subsection{arthmetic\_expression}
+{\itshape
+arthmetic\_expression\\
+\hspace*{1cm}  unary\_expression\\
+\hspace*{1cm}    arthmetic\_expression '$^\wedge$' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '*' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '/' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '+' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '-' unary\_expression\\
+\hspace*{1cm};\\
+}
+It is just a bunch of arthemetic operations like \textit{power}, \textit{addition},\textit{multiplication},\textit{division},\textit{substraction} on a bunch of unary expressions
+\subsection{logical\_expression}
+{\itshape
+logical\_expression\\
+\hspace*{1cm} arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression '$<$' arthemetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression '$>$' arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression LE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression GE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression EQ\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression NE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression AND\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression OR\_OP arthmetic\_expression\\
+\hspace*{1cm};\\
+}
+It is a bunch of logical operations like \textit{and} ,\textit{or} and comparisions like \textit{less than},\textit{greater than },\textit{less than equal to},\textit{greater than equal to},\textit{equal to},\textit{not equal to}
+\subsection{assignment\_expression}
+{\itshape
+assignment\_expression\\
+\hspace*{1cm} logical\_expression\\
+\hspace*{1cm}   unary\_expression '=' assignment\_expression\\
+\hspace*{1cm};\\
+}
+It assigns the value/output of a logical expression to a unary expression in a sequential manner.
+\subsection{expression}
+{\itshape
+expression\\
+\hspace*{1cm} assignment\_expression\\
+\hspace*{1cm}   expression ',' assignment\_expression\\
+\hspace*{1cm};\\
+}
+It is a bunch of assignment expressions seperated by a ',' .\\
+This is used when declaring multiple variables in a single line
+\subsection{declaration}
+{\itshape
+declaration\\
+\hspace*{1cm} declaration\_specifiers init\_declarator\_list ';'\\
+\hspace*{1cm}	 struct\_specifier\\
+\hspace*{1cm};\\
+}
+This is used to declare a variable or a struct
+\subsection{init\_declarator\_list}
+{\itshape
+init\_declarator\_list\\
+\hspace*{1cm} init\_declarator\\
+\hspace*{1cm}   init\_declarator\_list ',' init\_declarator\\
+\hspace*{1cm};\\
+}
+This contains a bunch of initiation declarations seperated by a ','
+\subsection{init\_declarator}
+{\itshape
+init\_declarator\\
+\hspace*{1cm} declarator\\
+\hspace*{1cm}   declarator '=' initializer\\
+\hspace*{1cm};\\
+}
+This allows us to either define and assign value to a variable simultaneously or just define the variable.
+\subsection{type\_specifier}
+{\itshape
+type\_specifier\\
+\hspace*{1cm} VOID\\
+\hspace*{1cm}   CHAR\\
+\hspace*{1cm}   STRING\\
+\hspace*{1cm}   INT\\
+\hspace*{1cm}   BOOL\\
+\hspace*{1cm}   STRUCT IDENTIFIER\\
+\hspace*{1cm}   DIST\\
+\hspace*{1cm}   LY\\
+\hspace*{1cm}   AU\\
+\hspace*{1cm}   MASS\\
+\hspace*{1cm}   SOLAR\_MASS\\
+\hspace*{1cm}   DENSITY\\
+\hspace*{1cm}   TIME\\
+\hspace*{1cm}   SPEED\\
+\hspace*{1cm}   ACC\\
+\hspace*{1cm}   ENERGY\\
+\hspace*{1cm}   FORCE\\
+\hspace*{1cm}   FREQ\\
+\hspace*{1cm}   PARSEC\\
+\hspace*{1cm}   TEMP\\
+\hspace*{1cm}   ARCSEC\\
+\hspace*{1cm};\\
+}
+This checks for all the data types available in the language
+\subsection{struct\_specifier}
+{\itshape
+struct\_specifier\\
+\hspace*{1cm}  STRUCT IDENTIFIER '{' struct\_declaration\_list '}'\\
+\hspace*{1cm};\\
+}
+This allows us to define a struct by using the keyword \textit{STRUCT} and give a \textit{name/identifier} to the struct in the format of \textit{struct\_declaration\_list }
+\subsection{struct\_declaration\_list}
+{\itshape
+struct\_declaration\_list\\
+\hspace*{1cm} type\_specifier struct\_declarator\_list\\
+\hspace*{1cm}   struct\_declarator\_list type\_specifier struct\_declarator\_list\\
+\hspace*{1cm};\\
+}
+This contains a bunch of declaration statemts that are to be stored the struct datatype
+\subsection{struct\_declarator\_list}
+{\itshape
+struct\_declarator\_list\\
+\hspace*{1cm} declarator\\
+\hspace*{1cm}   struct\_declarator\_list ',' declarator\\
+\hspace*{1cm};\\
+}
+This contains the variables and functions that are to be stored in the struct
+\subsection{declarator}
+{\itshape
+declarator\\
+\hspace*{1cm} IDENTIFIER \\
+\hspace*{1cm}   declarator'(' ')'\\
+\hspace*{1cm}   declarator'(' parameter\_list ')'\\
+\hspace*{1cm};\\
+}
+A declarator can be a \textit{IDENTIFIER} or a \textit{function with arguments} or a \textit{function with no arguments}
+\subsection{parameter\_list}
+{\itshape
+parameter\_list\\
+\hspace*{1cm} parameter\_declaration\\
+\hspace*{1cm}   parameter\_list ',' parameter\_declaration\\
+\hspace*{1cm};\\
+}
+This is a bunch of \textit{parameter declarations } seperated by ','
+\subsection{parameter\_declaration}
+{\itshape
+parameter\_declaration\\
+\hspace*{1cm} type\_specifier declarator\\
+\hspace*{1cm};\\
+}
+This is used to declare a \textit{variable} by just specifying the data type and name of the na==variable
+\subsection{statement}
+{\itshape
+statement\\
+\hspace*{1cm} compound\_statement\\
+\hspace*{1cm}   expression\_statement\\
+\hspace*{1cm}   selection\_statement\\
+\hspace*{1cm}   iteration\_statement\\
+\hspace*{1cm}   jump\_statement\\
+\hspace*{1cm};\\
+}
+A statement can be one of \textit{compound} or \textit{expression} or \textit{selection} or \textit{iteration} or \textit{jump} statement
+\subsection{statement\_list}
+{\itshape
+statement\_list\\
+\hspace*{1cm} statement\\
+\hspace*{1cm}   declaration\\
+\hspace*{1cm}   statement\_list statement\\
+\hspace*{1cm}   statement\_list declaration\\
+\hspace*{1cm};\\
+}
+This is used to write a bunch of declaration and normal statements in any order
+\subsection{compound\_statement}
+{\itshape
+compound\_statement\\
+\hspace*{1cm} '{' '}'\\
+\hspace*{1cm}   '{' statement\_list '}'\\
+\hspace*{1cm};\\
+}
+This is used to define multiple statements in a parenthesis.
+\subsection{expression\_statement}
+{\itshape
+expression\_statement\\
+\hspace*{1cm} ';'\\
+\hspace*{1cm}   expression ';'\\
+\hspace*{1cm};\\
+}
+This is used to define a \textit{empty statement} or a \textit{expression}
+\subsection{selection\_statement}
+{\itshape
+selection\_statement\\
+\hspace*{1cm} IF '(' expression ')' statement \\
+\hspace*{1cm}   IF '(' expression ')' statement ELSE statement\\
+\hspace*{1cm};\\
+}
+This is used to define if-else statement
+\subsection{iteration\_statement}
+{\itshape
+iteration\_statement\\
+\hspace*{1cm} REPEAT '(' expression\_statement expression\_statement ')' statement\\
+\hspace*{1cm}   REPEAT'(' expression\_statement expression\_statement expression ')' statement\\
+\hspace*{1cm};\\
+}
+This is used to write a loop with keyword \textit{REPEAT} and defining the statements that needs to be done in the parenthesis
+\subsection{jump\_statement}
+{\itshape
+jump\_statement\\
+\hspace*{1cm} CONTINUE ';'\\
+\hspace*{1cm}   BREAK ';'\\
+\hspace*{1cm}   RETURN ';'\\
+\hspace*{1cm}   RETURN expression ';'\\
+\hspace*{1cm};\\
+}
+This is used to identify the jump statemnt that is used to jump to pointed statement
+\subsection{root\_unit}
+{\itshape
+root\_unit\\
+\hspace*{1cm} external\_declaration\\
+\hspace*{1cm}   root\_unit external\_declaration\\
+\hspace*{1cm};\\
+}
+This is the start unit of the TM which expands to sequence of \textit{external\_declaration}
+\subsection{external\_declaration}
+{\itshape
+external\_declaration\\
+\hspace*{1cm} PROC function\_definition\\
+\hspace*{1cm}   declaration\\
+\hspace*{1cm};\\
+}
+This is used to define a function(like main) or a \textit{declaration}
+\subsection{function\_definition}
+{\itshape
+function\_definition\\
+\hspace*{1cm} type\_specifiers declarator compound\_statement\\
+\hspace*{1cm};\\
+}
+This is used to define the structure of the function
+
+
+
+
+
+
+
+\section{Grammar:-}
+{\itshape
+primary\_expression\\
+\hspace*{1cm} IDENTIFIER\\
+\hspace*{1cm}   CONSTANT\\
+\hspace*{1cm}   '(' expression ')'\\
+\hspace*{1cm};\\
+postfix\_expression\\
+\hspace*{1cm} primary\_expression\\
+\hspace*{1cm}   postfix\_expression '(' ')'\\
+\hspace*{1cm}   postfix\_expression '(' argument\_list ')'\\
+\hspace*{1cm}   postfix\_expression '.' IDENTIFIER\\
+\hspace*{1cm}   postfix\_expression INC\_OP\\
+\hspace*{1cm}   postfix\_expression DEC\_OP\\
+\hspace*{1cm};\\
+argument\_list\\
+\hspace*{1cm} assignment\_expression\\
+\hspace*{1cm}   argument\_expression\_list ',' assignment\_expression\\
+\hspace*{1cm};\\
+unary\_expression\\
+\hspace*{1cm} postfix\_expression\\
+\hspace*{1cm}   INC\_OP unary\_expression\\
+\hspace*{1cm}   DEC\_OP unary\_expression\\
+\hspace*{1cm};\\
+arthmetic\_expression\\
+\hspace*{1cm}  unary\_expression\\
+\hspace*{1cm}    arthmetic\_expression '$^\wedge$' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '*' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '/' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '+' unary\_expression\\
+\hspace*{1cm}   arthmetic\_expression '-' unary\_expression\\
+\hspace*{1cm};\\
+logical\_expression\\
+\hspace*{1cm} arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression '$<$' arthemetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression '$>$' arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression LE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression GE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression EQ\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression NE\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression AND\_OP arthmetic\_expression\\
+\hspace*{1cm}   arthmetic\_expression OR\_OP arthmetic\_expression\\
+\hspace*{1cm};\\
+assignment\_expression\\
+\hspace*{1cm} logical\_expression\\
+\hspace*{1cm}   unary\_expression '=' assignment\_expression\\
+\hspace*{1cm};\\
+expression\\
+\hspace*{1cm} assignment\_expression\\
+\hspace*{1cm}   expression ',' assignment\_expression\\
+\hspace*{1cm};\\
+declaration\\
+\hspace*{1cm} declaration\_specifiers init\_declarator\_list ';'\\
+\hspace*{1cm}	 struct\_specifier\\
+\hspace*{1cm};\\
+init\_declarator\_list\\
+\hspace*{1cm} init\_declarator\\
+\hspace*{1cm}   init\_declarator\_list ',' init\_declarator\\
+\hspace*{1cm};\\
+init\_declarator\\
+\hspace*{1cm} declarator\\
+\hspace*{1cm}   declarator '=' initializer\\
+\hspace*{1cm};\\
+type\_specifier\\
+\hspace*{1cm} VOID\\
+\hspace*{1cm}   CHAR\\
+\hspace*{1cm}   STRING\\
+\hspace*{1cm}   INT\\
+\hspace*{1cm}   BOOL\\
+\hspace*{1cm}   STRUCT IDENTIFIER\\
+\hspace*{1cm}   DIST\\
+\hspace*{1cm}   LY\\
+\hspace*{1cm}   AU\\
+\hspace*{1cm}   MASS\\
+\hspace*{1cm}   SOLAR\_MASS\\
+\hspace*{1cm}   DENSITY\\
+\hspace*{1cm}   TIME\\
+\hspace*{1cm}   SPEED\\
+\hspace*{1cm}   ACC\\
+\hspace*{1cm}   ENERGY\\
+\hspace*{1cm}   FORCE\\
+\hspace*{1cm}   FREQ\\
+\hspace*{1cm}   PARSEC\\
+\hspace*{1cm}   TEMP\\
+\hspace*{1cm}   ARCSEC\\
+\hspace*{1cm};\\
+struct\_specifier\\
+\hspace*{1cm}  struct\_or\_union '{' struct\_declaration\_list '}'\\
+\hspace*{1cm};\\
+struct\_declaration\_list\\
+\hspace*{1cm} type\_specifier struct\_declarator\_list\\
+\hspace*{1cm}   struct\_declarator\_list type\_specifier struct\_declarator\_list\\
+\hspace*{1cm};\\
+struct\_declarator\_list\\
+\hspace*{1cm} declarator\\
+\hspace*{1cm}   struct\_declarator\_list ',' declarator\\
+\hspace*{1cm};\\
+declarator\\
+\hspace*{1cm} IDENTIFIER \\
+\hspace*{1cm}   declarator'(' ')'\\
+\hspace*{1cm}   declarator'(' parameter\_list ')'\\
+\hspace*{1cm};\\
+parameter\_list\\
+\hspace*{1cm} parameter\_declaration\\
+\hspace*{1cm}   parameter\_list ',' parameter\_declaration\\
+\hspace*{1cm};\\
+parameter\_declaration\\
+\hspace*{1cm} type\_specifier declarator\\
+\hspace*{1cm};\\
+statement\\
+\hspace*{1cm} compound\_statement\\
+\hspace*{1cm}   expression\_statement\\
+\hspace*{1cm}   selection\_statement\\
+\hspace*{1cm}   iteration\_statement\\
+\hspace*{1cm}   jump\_statement\\
+\hspace*{1cm};\\
+statement\_list\\
+\hspace*{1cm} statement\\
+\hspace*{1cm}   declaration\\
+\hspace*{1cm}   statement\_list statement\\
+\hspace*{1cm}   statement\_list declaration\\
+\hspace*{1cm};\\
+compound\_statement\\
+\hspace*{1cm} '{' '}'\\
+\hspace*{1cm}   '{' statement\_list '}'\\
+\hspace*{1cm};\\
+expression\_statement\\
+\hspace*{1cm} ';'\\
+\hspace*{1cm}   expression ';'\\
+\hspace*{1cm};\\
+selection\_statement\\
+\hspace*{1cm} IF '(' expression ')' statement \%prec LOWER\_THAN\_ELSE \\
+\hspace*{1cm}   IF '(' expression ')' statement ELSE statement\\
+\hspace*{1cm};\\
+iteration\_statement\\
+\hspace*{1cm} REPEAT '(' expression\_statement expression\_statement ')' statement\\
+\hspace*{1cm}   REPEAT'(' expression\_statement expression\_statement expression ')' statement\\
+\hspace*{1cm};\\
+jump\_statement\\
+\hspace*{1cm} CONTINUE ';'\\
+\hspace*{1cm}   BREAK ';'\\
+\hspace*{1cm}   RETURN ';'\\
+\hspace*{1cm}   RETURN expression ';'\\
+\hspace*{1cm};\\
+root\_unit\\
+\hspace*{1cm} external\_declaration\\
+\hspace*{1cm}   root\_unit external\_declaration\\
+\hspace*{1cm};\\
+external\_declaration\\
+\hspace*{1cm} PROC function\_definition\\
+\hspace*{1cm} declaration\\
+\hspace*{1cm};\\
+function\_definition\\
+\hspace*{1cm} type\_specifiers declarator compound\_statement\\
+\hspace*{1cm};\\
+}
+\end{document}

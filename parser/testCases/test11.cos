@@ -1,0 +1,19 @@
+
+#/ 1 represents smaller and 2 represents larger /#
+#/ Testing if if is working properly independently /#
+proc int main(){
+	mass m1 = 3.54e23;
+	if(m1=6.54e10)
+	{
+		if(m1>7e15)
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	return 0;
+		
+}

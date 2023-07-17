@@ -1,0 +1,33 @@
+#/Nested if-else check and true-false check/#
+proc int main(){
+    if(true)
+    {
+        {
+            if(3!=4.0e0)
+            {
+                ;
+                {
+                    if(1)
+                    {
+                        return 0;
+                    }
+                    else if(false)
+                    {
+                        #/hi/#
+                    }
+                    else{
+                        speed int i = 6;
+                    }
+                }
+            }
+            else{
+                return 0;
+            }
+        }
+    }
+    else
+    {
+        3;
+    }
+	return 0;	
+}

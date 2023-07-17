@@ -1,0 +1,30 @@
+struct planet 
+{
+    mass m;
+    dist radius;
+};
+
+struct solar_system
+{
+    struct planet planet[8];
+    string name[8];
+};
+
+proc int main()
+{
+    struct planet earth;
+    mass m = 1.23456e20;
+    mass m2 = 6.243e24;
+    acc a = 2.22e3;
+
+    #/ A struct used in another struct is allowed /#
+    struct solar_system Solar_System;
+    Solar_System.name[0] = "Neptune";
+    Solar_System.planet[0].m = 9.74e12;
+    Solar_System.planet[0].radius = 5.123e8;
+
+
+    earth.mass.radius = -10; #/ struct object syntax error /#
+    earth..mass= 2.0e10; #/ struct object syntax error /#
+    return 0;
+}

@@ -1,0 +1,7 @@
+#/ missing main function /#
+{
+    int a =10.3e13;
+    int b = a*a;
+    int c = a^2;
+    return 0;
+}

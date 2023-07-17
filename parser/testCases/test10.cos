@@ -1,0 +1,22 @@
+#/function calling check/#
+struct Planet
+{
+	string name;
+	mass m;
+	dist radius;
+};
+
+proc dist schwarschild_radius(mass m)
+{
+	dist r = (2*G*m)/c^2;
+	return r;
+}
+
+proc int main()
+{
+	struct planet earth;
+	earth.radius = 6.4e6;
+	earth.m = 6.0e24;
+	output(schwarschild_radius(earth.m));
+	return 0;
+}

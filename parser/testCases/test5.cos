@@ -1,0 +1,14 @@
+proc int main(){
+    #/Testing random Calculations/#
+    repeat(y=1.0e5;y>=0;y--)
+    {
+        t= t-(rand()%5);
+        m = m*5;
+        x = x^7;
+        c =  c/7;
+        z = 1.0e1*5.7869e4*9/105;
+        y--;
+        t--;
+    }
+	return 0;	
+}

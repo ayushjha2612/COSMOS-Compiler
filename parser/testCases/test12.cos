@@ -1,0 +1,20 @@
+struct black_body
+{
+	mass m;
+	temp t;
+	string name;
+};
+#/ Missing proc /#
+dist weins_law(temp T)
+{
+	dist lambda=2.89e-3/T;
+	return lambda;
+}
+
+proc int main()
+{
+	struct black_body star1;
+	planet1.t=3.0e5;
+	planet1.name="nebula";
+	dist optimal_temp=weins_law(planet1.t);
+}

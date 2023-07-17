@@ -1,0 +1,20 @@
+// Undeclared variable m2 
+
+struct astrobject
+{
+	mass m;
+    dist r;
+};
+
+proc mass speaaa(mass a, acc b)
+{
+	return b*a*6.66e-31;
+}
+
+proc int main()
+{
+	mass m1 = 1.12e23;
+	m1= 1.1e2*m2;
+
+	return 0;
+}

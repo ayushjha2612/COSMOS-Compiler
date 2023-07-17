@@ -1,0 +1,9 @@
+#/ testing multiple assignment operators /#
+proc int main()
+{
+    mass m1=31.5e21;
+    mass m2 = 54.3e23;
+    mass m3,m4;
+    m3=m4=m1+m2;
+    return 0;
+}

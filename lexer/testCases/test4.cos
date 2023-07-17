@@ -1,0 +1,41 @@
+struct planet
+{
+    mass m;
+    dist radius;
+    string name;
+}
+
+proc int main()
+{
+    planet planet1;
+    planet1.m=5.646e22;
+    planet1.name="mars";
+    planet1.radius=1.46e8;
+
+    planet planet2;
+    planet2.m=3.533e24;
+    planet2.radius=1.7e9;
+    planet2.name="jupiter";
+
+    planet bigger_planet;
+    planet heavier_planet;
+
+    if(planet1.m>planet2.m)
+    {
+        heavier_planet=planet1;
+    }
+    else
+    {
+        heavier_planet=planet2;
+    }
+
+
+    if(planet1.radius>planet2.radius)
+    {
+        bigger_planet=planet1;
+    }
+    else
+    {
+        bigger_planet=planet2;
+    }
+}

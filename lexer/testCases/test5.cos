@@ -1,0 +1,24 @@
+struct planet
+{
+    mass m;
+    dist radius;
+    string name;
+}
+
+proc int main()
+{
+    planet earth;
+    earth.m = 5.972e24;
+    earth.name = "earth";
+    earth.radius = 6.371e6;
+
+    planet moon;
+    moon.name="moon";
+    moon.m=7.347e22;
+    moon.radius=1.734e6;
+
+    dist center_earth_moon=3.84e8;
+
+    dist surface_earth_moon=center_earth_moon-moon.radius-earth.radius;
+
+    return 0;

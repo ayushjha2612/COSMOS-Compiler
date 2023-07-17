@@ -1,0 +1,22 @@
+name: Lexer Build and Test
+
+on:  push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install flex
+      run: |
+       sudo apt-get update
+       sudo apt-get install flex
+
+    - name: run all
+      run: |
+        cd lexer/
+        make all
+      

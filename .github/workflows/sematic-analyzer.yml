@@ -1,0 +1,23 @@
+name: Semantics Testing
+
+on:  push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install flex and bison
+      run: |
+       sudo apt-get update
+       sudo apt-get install flex
+       sudo apt-get install bison
+
+    - name: run all
+      run: |
+        cd semantic-analyzer/
+        make all
+      

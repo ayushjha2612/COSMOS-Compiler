@@ -1,0 +1,7 @@
+proc int main()
+{
+    #/ checking for matching brackets /#
+
+    int value = (2.5e2^3.0e0*(8.5e6);
+    return 0;
+}
